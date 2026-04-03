@@ -46,6 +46,10 @@ function createProjectLink(label, href, projectTitle) {
   return link;
 }
 
+function hasNonEmptyValue(value) {
+  return typeof value === "string" && value.trim().length > 0;
+}
+
 function renderHero(hero) {
   setText("hero-name", hero.name);
 
@@ -110,31 +114,36 @@ function renderProjects(section, projects) {
     article.className = "py-2 md:py-3 border-b border-gray-100";
 
     const topRow = document.createElement("div");
-    topRow.className =
-      "flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 sm:gap-3";
+    topRow.className = "flex flex-col sm:flex-row sm:items-start gap-1 sm:gap-3";
 
     const title = document.createElement("p");
     title.className = "typo-item-title";
     title.textContent = project.title;
 
-    const metric = document.createElement("p");
-    metric.className = "typo-meta whitespace-nowrap";
-    metric.textContent = project.metric;
-
-    topRow.append(title, metric);
+    topRow.append(title);
 
     const summary = document.createElement("p");
     summary.className = "typo-body mt-1";
     summary.textContent = project.summary;
 
-    const links = document.createElement("div");
-    links.className = "flex flex-wrap gap-x-4 gap-y-1 mt-2";
-    links.append(
-      createProjectLink("Live", project.live, project.title),
-      createProjectLink("GitHub", project.github, project.title),
-    );
+    const projectLinks = [];
+    if (hasNonEmptyValue(project.live)) {
+      projectLinks.push(createProjectLink("Live", project.live, project.title));
+    }
+    if (hasNonEmptyValue(project.github)) {
+      projectLinks.push(
+        createProjectLink("GitHub", project.github, project.title),
+      );
+    }
 
-    article.append(topRow, summary, links);
+    article.append(topRow, summary);
+    if (projectLinks.length > 0) {
+      const links = document.createElement("div");
+      links.className = "flex flex-wrap gap-x-4 gap-y-1 mt-2";
+      links.append(...projectLinks);
+      article.append(links);
+    }
+
     grid.append(article);
   });
 }

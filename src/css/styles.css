@@ -170,6 +170,19 @@ body {
 }
 
 @media (max-width: 640px) {
+  .typo-section-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+  }
+
+  .typo-section-title {
+    font-size: 1.16rem;
+  }
+
+  .typo-subsection-title {
+    font-size: 0.96rem;
+  }
+
   .discourse-row {
     grid-template-columns: 1fr;
     gap: 0.2rem;

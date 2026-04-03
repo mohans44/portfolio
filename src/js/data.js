@@ -3,7 +3,7 @@ const PORTFOLIO_DATA = {
     name: "Mohan Seetha",
     role: "Software Developer",
     qualification: "BTech in CSE @ GIET",
-    imageSrc: "/src/assets/hero.webp",
+    imageSrc: "src/assets/hero.webp",
     imageAlt: "Portrait of Mohan Seetha",
   },
   about: {
@@ -35,7 +35,6 @@ const PORTFOLIO_DATA = {
   projects: [
     {
       title: "Feed Focus",
-      metric: "10K+ Articles/Day",
       summary:
         "News platform processing 10,000+ daily articles across 150+ feeds with responsive topic filtering.",
       live: "https://feedfocused.vercel.app/",
@@ -43,15 +42,19 @@ const PORTFOLIO_DATA = {
     },
     {
       title: "Flick Deck",
-      metric: "1M+ Dataset",
       summary:
         "Personalized movie journal with recommendation engine for 1M+ records and sub-second search latency.",
       live: "https://flickdeck.vercel.app/",
       github: "https://github.com/mohans44/flickdeck",
     },
     {
+      title: "Cryptocurrency Price Forecasting",
+      summary:
+        "Multi-Asset Cryptocurrency Price Forecasting Using Attention-Enhanced LSTM",
+      github: "https://github.com/mohans44/cryptoforecasting",
+    },
+    {
       title: "GGU UniPass",
-      metric: "1,500+ Users",
       summary:
         "Digital hall-ticket and verification workflow used by 1,500+ students for exam operations.",
       live: "https://giet-unipass.vercel.app/",
@@ -59,7 +62,6 @@ const PORTFOLIO_DATA = {
     },
     {
       title: "Job Finder",
-      metric: "Role-Based",
       summary:
         "Role-based job portal with secure application tracking for recruiter and candidate workflows.",
       live: "https://job-finder-web.web.app/",
@@ -95,7 +97,7 @@ const PORTFOLIO_DATA = {
     },
     {
       label: "Read.CV",
-      href: "/src/assets/mohan_resume_sde.pdf",
+      href: "src/assets/mohan_resume_sde.pdf",
     },
     {
       label: "GitHub",
