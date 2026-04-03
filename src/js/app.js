@@ -22,12 +22,16 @@ function createEntryBlock(duration, title, organization) {
   return wrapper;
 }
 
-function createProjectLink(label, href) {
+function createProjectLink(label, href, projectTitle) {
   const link = document.createElement("a");
   link.className = "project-link";
   link.href = href;
   link.target = "_blank";
   link.rel = "noreferrer";
+  link.setAttribute(
+    "aria-label",
+    `${label} - ${projectTitle} (opens in a new tab)`,
+  );
 
   const text = document.createElement("span");
   text.className = "project-link-text";
@@ -36,6 +40,7 @@ function createProjectLink(label, href) {
   const icon = document.createElement("span");
   icon.className = "material-symbols-outlined";
   icon.textContent = "north_east";
+  icon.setAttribute("aria-hidden", "true");
 
   link.append(text, icon);
   return link;
@@ -125,8 +130,8 @@ function renderProjects(section, projects) {
     const links = document.createElement("div");
     links.className = "flex flex-wrap gap-x-4 gap-y-1 mt-2";
     links.append(
-      createProjectLink("Live", project.live),
-      createProjectLink("GitHub", project.github),
+      createProjectLink("Live", project.live, project.title),
+      createProjectLink("GitHub", project.github, project.title),
     );
 
     article.append(topRow, summary, links);
@@ -163,6 +168,7 @@ function renderDiscourse(discourse) {
     link.target = "_blank";
     link.rel = "noreferrer";
     link.textContent = item.title;
+    link.setAttribute("aria-label", `${item.title} (opens in a new tab)`);
 
     content.append(meta, link);
     row.append(rowIndex, content);
@@ -179,6 +185,7 @@ function renderSocials(socials, signature) {
       link.className = "typo-duration text-[#4A443F]/70 hover:underline";
       link.href = item.href;
       link.textContent = item.label;
+      link.setAttribute("aria-label", `${item.label} link`);
 
       if (!item.href.startsWith("mailto:")) {
         link.target = "_blank";

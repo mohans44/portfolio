@@ -3,8 +3,8 @@ const PORTFOLIO_DATA = {
     name: "Mohan Seetha",
     role: "Software Developer",
     qualification: "BTech in CSE @ GIET",
-    imageSrc: "/src/assets/hero.jpg",
-    imageAlt: "portfolio hero image",
+    imageSrc: "/src/assets/hero.webp",
+    imageAlt: "Portrait of Mohan Seetha",
   },
   about: {
     label: "01 / Profile",
