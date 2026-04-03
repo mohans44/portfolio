@@ -46,10 +46,6 @@ function createProjectLink(label, href, projectTitle) {
   return link;
 }
 
-function hasNonEmptyValue(value) {
-  return typeof value === "string" && value.trim().length > 0;
-}
-
 function renderHero(hero) {
   setText("hero-name", hero.name);
 
@@ -59,7 +55,7 @@ function renderHero(hero) {
     subtitle.append(document.createTextNode(hero.role));
 
     const divider = document.createElement("span");
-    divider.className = "text-outline-variant font-light";
+    divider.className = "text-[#b1b3a9] font-light";
     divider.textContent = "|";
 
     subtitle.append(divider, document.createTextNode(hero.qualification));
@@ -127,10 +123,10 @@ function renderProjects(section, projects) {
     summary.textContent = project.summary;
 
     const projectLinks = [];
-    if (hasNonEmptyValue(project.live)) {
+    if (project.live) {
       projectLinks.push(createProjectLink("Live", project.live, project.title));
     }
-    if (hasNonEmptyValue(project.github)) {
+    if (project.github) {
       projectLinks.push(
         createProjectLink("GitHub", project.github, project.title),
       );
@@ -191,7 +187,7 @@ function renderSocials(socials, signature) {
     socialLinks.textContent = "";
     socials.forEach((item) => {
       const link = document.createElement("a");
-      link.className = "typo-duration text-[#4A443F]/70 hover:underline";
+      link.className = "typo-duration";
       link.href = item.href;
       link.textContent = item.label;
       link.setAttribute("aria-label", `${item.label} link`);

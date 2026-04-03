@@ -1,18 +1,45 @@
+/* ─────────────────────────────────────────────
+   BASE
+   Sets the default background, text colour,
+   font, and rendering quality for the whole page.
+───────────────────────────────────────────── */
 body {
   background-color: #ffffff;
   color: #31332c;
+  font-family: "Manrope", sans-serif;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
+/* ─────────────────────────────────────────────
+   FONT UTILITIES
+   Used in HTML to set display/signature fonts
+   on specific elements (name, tagline, etc.).
+───────────────────────────────────────────── */
+.font-headline {
+  font-family: "Fraunces", serif;
+}
+
+.font-signature {
+  font-family: "Caveat", cursive;
+}
+
+/* ─────────────────────────────────────────────
+   TYPOGRAPHY SCALE
+   Reusable text styles applied via JS and HTML.
+   All sizes scale up at md breakpoint (768px)
+   and scale down at sm breakpoint (640px).
+───────────────────────────────────────────── */
+
+/* Uppercase label above section headings */
 .typo-section-label {
-  font-family: "Manrope", sans-serif;
   font-size: 0.75rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: #6a5d4d;
 }
 
+/* Primary section heading (h2) */
 .typo-section-title {
   font-family: "Fraunces", serif;
   font-size: 1.32rem;
@@ -20,6 +47,7 @@ body {
   color: #31332c;
 }
 
+/* Secondary heading within a section */
 .typo-subsection-title {
   font-family: "Fraunces", serif;
   font-size: 1.08rem;
@@ -27,26 +55,27 @@ body {
   color: #31332c;
 }
 
+/* General body/description text */
 .typo-body {
-  font-family: "Manrope", sans-serif;
   font-size: 0.74rem;
   line-height: 1.58;
   color: #5e6058;
 }
 
+/* Duration/date labels (e.g. "2022 – 2024") */
 .typo-duration {
-  font-family: "Manrope", sans-serif;
   font-size: 0.69rem;
   color: #6a5d4d;
 }
 
+/* Job/project role titles */
 .typo-role-title {
-  font-family: "Manrope", sans-serif;
   font-size: 0.81rem;
   font-weight: 700;
   color: #31332c;
 }
 
+/* Individual item titles in lists */
 .typo-item-title {
   font-family: "Fraunces", serif;
   font-size: 0.88rem;
@@ -54,14 +83,19 @@ body {
   color: #31332c;
 }
 
+/* Tiny metadata labels (tags, categories) */
 .typo-meta {
-  font-family: "Manrope", sans-serif;
   font-size: 0.58rem;
   letter-spacing: 0.13em;
   text-transform: uppercase;
   color: #6b7280;
 }
 
+/* ─────────────────────────────────────────────
+   MATERIAL SYMBOLS
+   Resets icon font rendering so icons sit
+   flush with adjacent text.
+───────────────────────────────────────────── */
 .material-symbols-outlined {
   font-variation-settings:
     "FILL" 0,
@@ -71,6 +105,11 @@ body {
   line-height: 1;
 }
 
+/* ─────────────────────────────────────────────
+   PROJECT LINKS
+   Compact call-to-action links on project cards,
+   with an underlined label and an arrow icon.
+───────────────────────────────────────────── */
 .project-link {
   display: inline-flex;
   align-items: center;
@@ -91,6 +130,11 @@ body {
   font-size: 0.82rem;
 }
 
+/* ─────────────────────────────────────────────
+   DISCOURSE LIST
+   Numbered rows of external article/talk links
+   in the Discourse section.
+───────────────────────────────────────────── */
 .discourse-list {
   border-top: 1px solid #ececec;
 }
@@ -121,89 +165,57 @@ body {
   align-items: flex-start;
   gap: 0.2rem;
   color: #2f3430;
-  transition: color 140ms ease;
 }
 
 .discourse-link:hover {
   color: #5f6058;
 }
 
+/* ─────────────────────────────────────────────
+   SOCIAL LINKS
+   Horizontal grid of social platform links
+   centered below the hero section.
+───────────────────────────────────────────── */
 #social-links {
   max-width: 430px;
   margin: 0 auto;
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
-@media (min-width: 768px) {
-  .typo-subsection-title {
-    font-size: 1.24rem;
-  }
-
-  .typo-section-title {
-    font-size: 1.85rem;
-  }
-
-  .typo-body {
-    font-size: 0.9rem;
-    line-height: 1.65;
-  }
-
-  .typo-duration {
-    font-size: 0.75rem;
-  }
-
-  .typo-role-title {
-    font-size: 0.88rem;
-  }
-
-  .typo-item-title {
-    font-size: 1.02rem;
-  }
-
-  .typo-meta {
-    font-size: 0.63rem;
-  }
-
-  .project-link {
-    font-size: 0.68rem;
-  }
+#social-links a {
+  color: rgb(74 68 63 / 0.7);
 }
 
+#social-links a:hover {
+  text-decoration: underline;
+}
+
+/* ─────────────────────────────────────────────
+   RESPONSIVE OVERRIDES
+───────────────────────────────────────────── */
+
+/* Scale type up on medium screens and above */
+@media (min-width: 768px) {
+  .typo-section-title    { font-size: 1.85rem; }
+  .typo-subsection-title { font-size: 1.24rem; }
+  .typo-body             { font-size: 0.9rem; line-height: 1.65; }
+  .typo-duration         { font-size: 0.75rem; }
+  .typo-role-title       { font-size: 0.88rem; }
+  .typo-item-title       { font-size: 1.02rem; }
+  .typo-meta             { font-size: 0.63rem; }
+  .project-link          { font-size: 0.68rem; }
+}
+
+/* Scale type down on small screens */
 @media (max-width: 640px) {
-  .typo-section-label {
-    font-size: 0.68rem;
-    letter-spacing: 0.12em;
-  }
+  .typo-section-label    { font-size: 0.68rem; letter-spacing: 0.12em; }
+  .typo-section-title    { font-size: 1.16rem; }
+  .typo-subsection-title { font-size: 0.96rem; }
 
-  .typo-section-title {
-    font-size: 1.16rem;
-  }
+  .discourse-row   { grid-template-columns: 1fr; gap: 0.2rem; padding: 0.62rem 0; }
+  .discourse-index { display: none; }
+  .discourse-meta  { margin-bottom: 0.18rem; }
+  .discourse-link  { display: block; }
 
-  .typo-subsection-title {
-    font-size: 0.96rem;
-  }
-
-  .discourse-row {
-    grid-template-columns: 1fr;
-    gap: 0.2rem;
-    padding: 0.62rem 0;
-  }
-
-  .discourse-index {
-    display: none;
-  }
-
-  .discourse-meta {
-    margin-bottom: 0.18rem;
-  }
-
-  .discourse-link {
-    display: block;
-  }
-
-  #social-links {
-    max-width: 380px;
-    font-size: 0.65rem;
-    letter-spacing: 0.1em;
-  }
+  #social-links { max-width: 380px; font-size: 0.65rem; letter-spacing: 0.1em; }
 }
